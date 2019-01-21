@@ -18,7 +18,7 @@ int compareDigitOfIntegers(int a, int b);
 
 int main()
 {
-    int a=12, b=34;
+    int a=1223, b=3425;
 
     printf("Το αποτέλεσμα του ελέγχου των δύο ακεραίων είναι: %d", compareDigitOfIntegers(a,b));
 
@@ -32,10 +32,11 @@ int main()
  * @param b
  * @return
  */
-int compareDigitOfIntegers(int a, int b)
+int compareDigitOfIntegers(int a, b)
 {
+    if ( (a % 100) == (b % 100) ) {
+        return 1;
+    }
 
-
-
-    return 1;
+    return 0;
 }
