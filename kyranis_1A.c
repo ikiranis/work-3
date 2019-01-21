@@ -14,26 +14,24 @@
 
 #include <stdio.h>
 
-int compareDigitOfIntegers(int a, int b);
+int compareDigitsOfIntegers(int a, int b);
 
 int main()
 {
-    int a=1223, b=3425;
+    int a=1223, b=3423;
 
-    printf("Το αποτέλεσμα του ελέγχου των δύο ακεραίων είναι: %d", compareDigitOfIntegers(a,b));
+    printf("Το αποτέλεσμα του ελέγχου των δύο ακεραίων είναι: %d", compareDigitsOfIntegers(a,b));
 
     return 0;
 }
 
 /**
  * Έλεγχος 2 ακεραίων, αν έχουνε ίδια τα 2 τελευταία ψηφία τους
- *
- * @param a
- * @param b
- * @return
  */
-int compareDigitOfIntegers(int a, b)
+int compareDigitsOfIntegers(int a, int b)
 {
+    // Τα 2 τελευταία ψηφία ενός αριθμού είναι το υπόλοιπο της διαίρεσης του αριθμού, με το 100
+    // Ελέγχουμε αν είναι ίσα μεταξύ τους τα δύο τελευταία ψηφία των 2 αριθμών
     if ( (a % 100) == (b % 100) ) {
         return 1;
     }
