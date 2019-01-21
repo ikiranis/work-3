@@ -16,12 +16,26 @@
 
 #include <stdio.h>
 
-int
+int factorial(int number);
 
 int main()
 {
+    int someNumber = 10;
+
+    printf("Factorial: %d\n", factorial(someNumber));
 
 
+    return 0;
+}
 
-    return 5 == 5;
+/**
+ * Υπολογισμός του παραγοντικού
+ */
+int factorial(int number)
+{
+    if(number==1) {
+        return 1;
+    } else {
+        return number * factorial(number-1);
+    }
 }
