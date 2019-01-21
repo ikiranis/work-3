@@ -20,22 +20,39 @@ int factorial(int number);
 
 int main()
 {
-    int someNumber = 10;
+    int number;
+    int digit;
+    int sum;
+    int i;
 
-    printf("Factorial: %d\n", factorial(someNumber));
+    for (i=10000; i<100000; i++) {
+        number = i;
+        sum = 0;
 
+        while (number > 0) {
+            digit = number % 10;
+            number = number /  10;
+
+            sum += factorial(digit);
+        }
+
+        if(sum == i) {
+            printf("Το %d ισούται με το άθροισμα των παραγοντικών ψηφίων του\n", i);
+        }
+
+    }
 
     return 0;
 }
 
 /**
- * Υπολογισμός του παραγοντικού
+ * Υπολογισμός του παραγοντικού, με αναδρομική συνάρτηση
  */
 int factorial(int number)
 {
-    if(number==1) {
-        return 1;
+    if(number==0) {
+        return 1; // Επιστρέφει 1 και τερματίζεται την αναδρομή
     } else {
-        return number * factorial(number-1);
+        return number * factorial(number-1); // n!=n*(n-1)!
     }
 }
