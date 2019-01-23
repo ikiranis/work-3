@@ -69,8 +69,9 @@ void calculate_values(double l, double r)
 {
     int i; // Μετρητής
 
+    // Υπολογίζουμε τις τιμές και τις τοποθετούμε στον πίνακα vals
     for (i=0; i<P; i++) {
-        vals[i].x = l + (i*(r-l))/(P-1); // Υπολογισμός του x
+        vals[i].x = l + (i*(r-l)) / (P-1); // Υπολογισμός του x
         vals[i].y = function(vals[i].x); // Υπολογισμός του y=f(x)
     }
 
