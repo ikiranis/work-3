@@ -20,7 +20,60 @@
 
 #include <stdio.h>
 
+// Το σύνολο των αθλητών
+#define ATHLETES 8
+
 int main()
 {
+    int athleteNumbers[ATHLETES]; // Ο πίνακας με τα νούμερα φανέλας των αθλητών
+    float jumps[ATHLETES]; // Ο πίνακας με τις επιδόσεις
+    int i,j; // Μετρητές
+    // Προσωρινές μεταβλητές για ανταλλαγή τιμών
+    float tempJump;
+    int tempNumber;
 
+    // Εισαγωγή δεδομένων για όλους τους αθλητές, με αμυντικό προγραμματισμό
+    for (i=0; i<ATHLETES; i++) {
+        do {
+            printf("Δώσε αριθμό φανέλας για τον αθλητή %d: ", i+1);
+            scanf("%d", &athleteNumbers[i]);
+
+            if (athleteNumbers[i]<100 || athleteNumbers[i]>999) {
+                printf("Ο αριθμός πρέπει να είναι από 100-999\n");
+            }
+        } while (athleteNumbers[i]<100 || athleteNumbers[i]>999);
+
+        do {
+            printf("Δώσε επίδοση για τον αθλητή %d: ", i+1);
+            scanf("%f", &jumps[i]);
+
+            if (jumps[i]<0.0 || jumps[i]>9.9) {
+                printf("Η επίδοση πρέπει να είναι από 0.0-9.9\n");
+            }
+        } while (jumps[i]<0.0 || jumps[i]>9.9);
+    }
+
+    // Ταξινόμηση (σε φθίνουσα) των 2 πινάκων με βάση τις επιδόσεις, με την μέθοδο της φυσσαλίδας
+    for (i=0; i<ATHLETES-1; i++) {
+        for (j=ATHLETES; j>=i+1; j--) {
+            if (jumps[j]>jumps[j-1]) {
+                tempJump = jumps[j-1];
+                jumps[j-1] = jumps[j];
+                jumps[j] = tempJump;
+
+                tempNumber = athleteNumbers[j-1];
+                athleteNumbers[j-1] = athleteNumbers[j];
+                athleteNumbers[j] = tempNumber;
+            }
+        }
+    }
+
+    // Εμφάνιση των αποτελεσμάτων
+    printf("Αρ. φανέλας\tΕπίδοση\n");
+
+    for (i=0; i<ATHLETES; i++) {
+        printf("%d \t\t %2.1f\n", athleteNumbers[i], jumps[i]);
+    }
+
+    return 0;
 }
