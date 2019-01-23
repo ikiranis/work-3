@@ -55,7 +55,7 @@ int main()
 
     // Ταξινόμηση (σε φθίνουσα) των 2 πινάκων με βάση τις επιδόσεις, με την μέθοδο της φυσσαλίδας
     for (i=0; i<ATHLETES-1; i++) {
-        for (j=ATHLETES; j>=i+1; j--) {
+        for (j=ATHLETES-1; j>=i+1; j--) {
             if (jumps[j]>jumps[j-1]) {
                 tempJump = jumps[j-1];
                 jumps[j-1] = jumps[j];
