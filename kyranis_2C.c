@@ -39,7 +39,7 @@ int main()
             scanf("%d", &athleteNumbers[i]);
 
             if (athleteNumbers[i]<100 || athleteNumbers[i]>999) {
-                printf("Ο αριθμός πρέπει να είναι από 100-999\n");
+                printf("Ο αριθμός πρέπει να είναι μεταξύ 100-999\n");
             }
         } while (athleteNumbers[i]<100 || athleteNumbers[i]>999);
 
@@ -48,7 +48,7 @@ int main()
             scanf("%f", &jumps[i]);
 
             if (jumps[i]<0.0 || jumps[i]>9.9) {
-                printf("Η επίδοση πρέπει να είναι από 0.0-9.9\n");
+                printf("Η επίδοση πρέπει να είναι μεταξύ 0.0-9.9\n");
             }
         } while (jumps[i]<0.0 || jumps[i]>9.9);
     }
