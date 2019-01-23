@@ -28,6 +28,7 @@ int main()
 {
 
     int givenSeconds; // Τα δευτερόλεπτα που δίνει ο χρήστης
+    int remainSeconds; // Το υπόλοιπο των δευτερολέπτων που απομένει για την επόμενη μετατροπή
     int years, months, days, hours, minutes, seconds; // Οι αντίστοιχες μετατροπές
 
     // Ο χρήστης δίνει αριθμό δευτερολέπτων με αμυντικό προγραμματισμό (1-999999999)
@@ -44,19 +45,19 @@ int main()
     // Υπολογισμός της κάθε μετατροπής. Η διαίρεση κάνει την μετατροπή.
     // Το υπόλοιπο της μεταφέρεται για την επόμενη μετατροπή
     years = givenSeconds / (SECONDS * MINUTES * HOURS * DAYS * MONTHS);
-    givenSeconds = givenSeconds % (SECONDS * MINUTES * HOURS * DAYS * MONTHS);
-    months = givenSeconds / (SECONDS * MINUTES * HOURS * DAYS);
-    givenSeconds = givenSeconds % (SECONDS * MINUTES * HOURS * DAYS);
-    days = givenSeconds / (SECONDS * MINUTES * HOURS);
-    givenSeconds = givenSeconds % (SECONDS * MINUTES * HOURS);
-    hours = givenSeconds / (SECONDS * MINUTES);
-    givenSeconds = givenSeconds % (SECONDS * MINUTES);
-    minutes = givenSeconds / SECONDS;
-    givenSeconds = givenSeconds % SECONDS;
-    seconds = givenSeconds;
+    remainSeconds = givenSeconds % (SECONDS * MINUTES * HOURS * DAYS * MONTHS);
+    months = remainSeconds / (SECONDS * MINUTES * HOURS * DAYS);
+    remainSeconds = remainSeconds % (SECONDS * MINUTES * HOURS * DAYS);
+    days = remainSeconds / (SECONDS * MINUTES * HOURS);
+    remainSeconds = remainSeconds % (SECONDS * MINUTES * HOURS);
+    hours = remainSeconds / (SECONDS * MINUTES);
+    remainSeconds = remainSeconds % (SECONDS * MINUTES);
+    minutes = remainSeconds / SECONDS;
+    remainSeconds = remainSeconds % SECONDS;
+    seconds = remainSeconds;
 
     // Εκτύπωση του αποτελέσματος
-    printf("Τα %d δευτερόλεπτα αντιστοιχούν σε\n%d χρόνια, %d μήνες, %d μέρεςς, %d ώρες, %d λεπτά, %d δευτερόλεπτα\n",
+    printf("Τα %d δευτερόλεπτα αντιστοιχούν σε\n%d χρόνια, %d μήνες, %d μέρες, %d ώρες, %d λεπτά, %d δευτερόλεπτα\n",
             givenSeconds, years, months, days, hours, minutes, seconds);
 
     return 0;
