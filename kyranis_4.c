@@ -240,8 +240,8 @@ int main()
 
     /*Υπολογισμός των κεραιών που θα χρειαστούν ανά περιοχή, με στρογγυλοποίηση*/
     for (i=0; i<Total_Regions; i++) {
-        printf("\nΤο πλήθος των κεραιών για την περιοχή %d είναι: %1.0f",
-                (i+1)*100, floor((maxAverageInRegions[i] / Radius) + 0.5));
+        printf("\nΤο πλήθος των κεραιών για την περιοχή %d είναι: %d",
+                (i+1)*100, (int) ((maxAverageInRegions[i] / Radius) + 0.5));
     }
 
 
