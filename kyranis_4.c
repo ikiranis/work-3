@@ -7,13 +7,15 @@
  * Date: 2019-01-23
  * Time: 23:46
  *
+ * Εύρεση ελάχιστου αριθμού κεραιών κινητής τηλεφωνίας
+ *
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
 
-#define plithos_simeiwn 20 /*Πλήθος σημείων ενδιαφέροντος*/
+#define plithos_simeiwn 2 /*Πλήθος σημείων ενδιαφέροντος*/
 #define Xmin 719604.0 /*Ελάχιστο γεωγραφικό μήκος*/
 #define Xmax 722538.0 /*Μέγιστο γεωγραφικό μήκος*/
 #define Ymin 4328469.0 /*Ελάχιστο γεωγραφικό πλάτος*/
@@ -39,28 +41,81 @@ double Average_Distances [plithos_simeiwn];
 /*Συνάρτηση για την καταχώρηση των σημείων ενδιαφέροντος με αμυντικό προγραμματισμό*/
 void Data_Points()
 {
-    /* Συμπληρώστε τον κώδικα */
+    int i;
+
+    // Ζητάει plithos_simeiwn φορές τα σημεία ενδιαφέροντος, με αμυντικό προγραμμτισμό
+    for (i=0; i<plithos_simeiwn; i++) {
+        do {
+            printf("Δώσε id για το σημείο %d: ", i+1);
+            scanf("%s", Points[i].id);
+
+            printf("Δωσε συντεταγμένη Χ για το σημείο %d: ", i+1);
+            scanf("%lf", &Points[i].x);
+
+            printf("Δωσε συντεταγμένη Y για το σημείο %d: ", i+1);
+            scanf("%lf", &Points[i].y);
+
+            if (Points[i].x<Xmin || Points[i].x>Xmax) {
+                printf("Έδωσες συντεταγμένες x εκτός ορίων της πόλης\n");
+            }
+
+            if (Points[i].y<Ymin || Points[i].y>Ymax) {
+                printf("Έδωσες συντεταγμένες y εκτός ορίων της πόλης\n");
+            }
+
+        } while ( (Points[i].x<Xmin || Points[i].x>Xmax)
+                || (Points[i].y<Ymin || Points[i].y>Ymax) );
+    }
 }
 
 
 /*Συνάρτηση υπολογισμού της Ευκλείδειας απόστασης μεταξύ δύο σημείων*/
 double Euclidean_Distance (int i, int j)
 {
-/* Συμπληρώστε τον κώδικα */
+    // Επιστρέφει το αποτέλεσμα του υπολογισμού
+    return sqrt( (Points[i].x - Points[j].x) * (Points[i].x - Points[j].x)
+               + (Points[i].y - Points[j].y) * (Points[i].y - Points[j].y) );
 }
 
 
 /*Συνάρτηση υπολογισμού κάθε σημείου με όλα τα υπόλοιπα*/
 void Populate_Distance_Matrix()
 {
-/* Συμπληρώστε τον κώδικα */
+    int i, j; // Μετρητές
+
+    // Σαρώνει όλα τα σημεία μεταξύ τους και υπολογίζει την απόσταση
+    for (i=0; i<plithos_simeiwn; i++) {
+        for (j=i; j<plithos_simeiwn; j++) {
+            if(i!=j) {
+                Distances[i][j] = Euclidean_Distance(i, j);
+            } else { // Όταν συγκρίνει ένα σημείο με τον εαυτό του, βάζει 0
+                Distances[i][j] = 0;
+            }
+        }
+    }
 }
 
 
 /*Συνάρτηση υπολογισμού της μέσης απόστασης του κάθε σημείου ως προς τα υπόλοιπα*/
 void Average_Distance_Matrix()
 {
-/* Συμπληρώστε τον κώδικα */
+    int i, j; // Μετρητές
+    double sum; // Το συνολικό άθροισμα των αποστάσεων ενός σημείου με τα υπόλοιπα
+
+    // Σαρώνει όλες τις αποστάσεις του πίνακα Distances μεταξύ τους
+    // και υπολογίζει τον μέσο όρο
+    for (i=0; i<plithos_simeiwn; i++) {
+        sum = 0; // Αρχικοποίηση του αθροίσματος
+
+        for (j=i; j<plithos_simeiwn; j++) {
+            if(i!=j) { // Δεν χρειάζεται να προσθέσει την απόσταση με τον εαυτό του
+                sum += Distances[i][j];
+            }
+        }
+
+        // Υπολογίζει τον μέσο όρο και των καταχωρεί στον πίνακα Average_Distances
+        Average_Distances[i] = sum / (plithos_simeiwn-1);
+    }
 }
 
 int main()

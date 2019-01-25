@@ -12,3 +12,6 @@ add_executable(kyranis_2A kyranis_2A.c)
 add_executable(kyranis_2C kyranis_2C.c)
 add_executable(kyranis_3 kyranis_3.c)
 add_executable(kyranis_4 kyranis_4.c)
+add_executable(test_sqrt test_sqrt.c)
+
+target_link_libraries(kyranis_4 m)
