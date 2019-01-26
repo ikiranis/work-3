@@ -14,7 +14,7 @@
 
 int main()
 {
-    int i=4;
+    double i = 4.5;
     double compute;
 
     compute = sqrt(i);
