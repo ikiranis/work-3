@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <string.h>
+//#include <string.h>
 
 #define plithos_simeiwn 13 /*Πλήθος σημείων ενδιαφέροντος*/
 #define Xmin 719604.0 /*Ελάχιστο γεωγραφικό μήκος*/
