@@ -12,8 +12,8 @@
  */
 
 #define P 45      /* σημεία για υπολογισμό */
-#define M 50      /* Screen: 90 rows x 160 columns */
-#define N 20
+#define M 160      /* Screen: 90 rows x 160 columns */
+#define N 90
 
 #include <math.h> /* απαιτείται για την χρήση της fabs(), η οποία επιστρέφει tηn απόλυτη τιμή της παραμέτρου που δέχεται ως είσοδο*/
 #include <stdio.h>
