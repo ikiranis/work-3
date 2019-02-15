@@ -30,22 +30,24 @@ int main()
     int number; // Αριθμός που εισάγει ο χρήστης
     int startRange, endRange; // Αρχή και τέλους διαστήματος που πρέπει να ανήκει ο αριθμός
 
+    number = 0; // Μηδενισμός του αριθμού για να υπολογίσει το αρχικό διάστημα επιτρεπτών αριθμών
+
     // Εισαγωγή δεδομένων για numbers αριθμούς, με αμυντικό προγραμματισμό
     for(i=0; i<numbers; i++) {
 
-        startRange = 0-range;
-        endRange = 0+range;
+        // Υπολογισμός της αρχής και τέλους του διαστήματος που ανήκει ο επόμενος αριθμός
+        startRange = number - range;
+        endRange = number + range;
 
         do {
-
             printf("\nΕισάγετε την τιμή του %dου κόμβου: [%d,%d]", i+1, startRange, endRange);
             scanf("%d", &number);
 
             if (number<startRange || number>endRange) {
                 printf("\nΛάθος τιμή! Η τιμή πρέπει να είναι στο διάστημα: [%d,%d]", startRange, endRange);
             }
-
-
         } while (number<startRange || number>endRange);
     }
+
+
 }
