@@ -20,9 +20,67 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define numbers 3 // Το πλήθος των αριθμών που ζητάει το πρόγραμμα
-#define range 10  // Το διάστημα από τον προηγούμενο αριθμό
+#define NUMBERS 3 // Το πλήθος των αριθμών που ζητάει το πρόγραμμα
+#define RANGE 10  // Το διάστημα από τον προηγούμενο αριθμό
+
+struct node /* ορισμός κόμβου λίστας */
+{
+    int data;
+    struct node *next; /* δείκτης σε δομή τύπου node */
+} *head;
+
+// Εισαγωγή στοιχείου στο τέλος της λίστας
+void insertInList(int value)
+{
+    struct node *item, *temp; // Δήλωση κόμβου προς εισαγωγή και βοηθητικού
+    temp = head; // Ο κόμβος δείχνει στην αρχή της λίστας
+
+    item = (struct node *) malloc(sizeof (struct node)); // Δέσμευση μνήμης
+    item->data = value; // Το πεδίο data παίρνει την τιμή του ακέραιου αριθμού
+
+    if(head==NULL) { // Αν η λίστα είναι άδεια δηλώνουμε την αρχή της
+        head = item;
+        head->next = NULL;
+    } else { // Αλλιώς γίνεται η εισαγωγή στην λίστα
+        while(temp->next!=NULL) { // Πηγαίνουμε στον τελευταίο κόμβο της λίστας διαδοχικά
+            temp = temp->next;
+        }
+
+        item->next = NULL; // Το πεδίο next παίρνει την τιμή null για να δηλωθεί ότι εδώ είναι το τέλος
+        temp->next = item; // Ο προσωρινός κόμβος δείχνει στον νέο
+    }
+}
+
+
+// Εμφάνιση τιμών απλά συνδεδεμένης λίστας και μέτρηση θετικών αριθμών
+void displayList()
+{
+    struct node *temp; // Δήλωση προσωρινού κόμβου τύπου node
+    int countPositives = 0; // Μετρηής θετικών τιμών
+
+    temp = head; // Ο κόμβος δείχνει στην αρχή της λίστας
+
+    if (temp==NULL) { // Αν η λίστα είναι άδεια
+        printf("\nΗ λίστα είναι άδεια");
+    } else { // Αν δεν είναι άδεια
+
+        printf("\nΤιμές λίστας: ");
+
+        while (temp!=NULL) { // Όσο δεν έχουμε φτάσει στο τέλος της λίστας
+            printf("%d ", temp->data); // Εμφάνιση του πεδίου data
+
+            if (temp->data>0) { // Αν ο αριθμός είναι θετικός αυξάνουμε τον μετρητή
+                countPositives++;
+            }
+
+            temp = temp->next; // Προχωράμε στον επόμενο κόμβο
+        }
+
+        printf("\nΥπάρχουν %d θετικές τιμές στην λίστα\n", countPositives);
+    }
+}
 
 int main()
 {
@@ -32,22 +90,24 @@ int main()
 
     number = 0; // Μηδενισμός του αριθμού για να υπολογίσει το αρχικό διάστημα επιτρεπτών αριθμών
 
-    // Εισαγωγή δεδομένων για numbers αριθμούς, με αμυντικό προγραμματισμό
-    for(i=0; i<numbers; i++) {
+    // Εισαγωγή δεδομένων για NUMBERS αριθμούς, με αμυντικό προγραμματισμό
+    for(i=0; i<NUMBERS; i++) {
 
         // Υπολογισμός της αρχής και τέλους του διαστήματος που ανήκει ο επόμενος αριθμός
-        startRange = number - range;
-        endRange = number + range;
+        startRange = number - RANGE;
+        endRange = number + RANGE;
 
         do {
-            printf("\nΕισάγετε την τιμή του %dου κόμβου: [%d,%d]", i+1, startRange, endRange);
+            printf("\nΕισάγετε την τιμή του %dου κόμβου: [%d,%d] ", i+1, startRange, endRange);
             scanf("%d", &number);
 
             if (number<startRange || number>endRange) {
                 printf("\nΛάθος τιμή! Η τιμή πρέπει να είναι στο διάστημα: [%d,%d]", startRange, endRange);
             }
         } while (number<startRange || number>endRange);
+
+        insertInList(number);
     }
 
-
+    displayList();
 }
