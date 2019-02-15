@@ -7,6 +7,8 @@
  * Date: 2019-01-23
  * Time: 23:46
  *
+ * ΥΠΟΕΡΓΑΣΙΑ 4
+ *
  * Εύρεση ελάχιστου αριθμού κεραιών κινητής τηλεφωνίας
  *
  */
@@ -14,7 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-//#include <string.h>
+#include <string.h>
 
 #define plithos_simeiwn 13 /*Πλήθος σημείων ενδιαφέροντος*/
 #define Xmin 719604.0 /*Ελάχιστο γεωγραφικό μήκος*/
@@ -68,57 +70,85 @@ void Data_Points()
 //                || (Points[i].y<Ymin || Points[i].y>Ymax) );
 //    }
 
-    strcpy(Points[0].id, "kfjhk");
-    Points[0].x = 720034;
-    Points[0].y = 4329856;
+    strcpy(Points[0].id, "1");
+    Points[0].x = 719604;
+    Points[0].y = 4328469;
 
-    strcpy(Points[1].id, "fgdfgfd");
-    Points[1].x = 720000;
-    Points[1].y = 4330455;
+    strcpy(Points[1].id, "2");
+    Points[1].x = 719704;
+    Points[1].y = 4328569;
 
-    strcpy(Points[2].id, "gegdfg");
-    Points[2].x = 720544;
-    Points[2].y = 4324565;
+    strcpy(Points[2].id, "3");
+    Points[2].x = 719804;
+    Points[2].y = 4328669;
 
-    strcpy(Points[3].id, "dfgg");
-    Points[3].x = 720543;
-    Points[3].y = 4329065;
+    strcpy(Points[3].id, "4");
+    Points[3].x = 719904;
+    Points[3].y = 4328769;
 
-    strcpy(Points[4].id, "kfefsgsfjhk");
-    Points[4].x = 721798;
-    Points[4].y = 4329756;
+    strcpy(Points[4].id, "5");
+    Points[4].x = 720004;
+    Points[4].y = 4328869;
 
-    strcpy(Points[5].id, "gfdshjyt");
-    Points[5].x = 722067;
-    Points[5].y = 4329678;
+    strcpy(Points[5].id, "6");
+    Points[5].x = 720104;
+    Points[5].y = 4328969;
 
-    strcpy(Points[6].id, "fshghg");
-    Points[6].x = 720657;
-    Points[6].y = 4339490;
+    strcpy(Points[6].id, "7");
+    Points[6].x = 720204;
+    Points[6].y = 4329069;
 
-    strcpy(Points[7].id, "jghhgf");
-    Points[7].x = 720749;
-    Points[7].y = 4329068;
+    strcpy(Points[7].id, "8");
+    Points[7].x = 720304;
+    Points[7].y = 4329169;
 
-    strcpy(Points[8].id, "errrtewt");
-    Points[8].x = 720768;
-    Points[8].y = 4329013;
+    strcpy(Points[8].id, "9");
+    Points[8].x = 720404;
+    Points[8].y = 4329269;
 
-    strcpy(Points[9].id, "xcvxzcv");
-    Points[9].x = 720564;
-    Points[9].y = 4329656;
+    strcpy(Points[9].id, "10");
+    Points[9].x = 720504;
+    Points[9].y = 4329369;
 
-    strcpy(Points[10].id, "kfjgfghfjhk");
-    Points[10].x = 720767;
-    Points[10].y = 4329057;
+    strcpy(Points[10].id, "11");
+    Points[10].x = 720604;
+    Points[10].y = 4329469;
 
-    strcpy(Points[11].id, "rwtytyrt");
-    Points[11].x = 720765;
-    Points[11].y = 4329758;
+    strcpy(Points[11].id, "12");
+    Points[11].x = 720704;
+    Points[11].y = 4329569;
 
-    strcpy(Points[12].id, "asfgf");
-    Points[12].x = 720476;
-    Points[12].y = 4329768;
+    strcpy(Points[12].id, "13");
+    Points[12].x = 720804;
+    Points[12].y = 4329669;
+
+    strcpy(Points[12].id, "14");
+    Points[12].x = 720904;
+    Points[12].y = 4329769;
+
+    strcpy(Points[12].id, "15");
+    Points[12].x = 721004;
+    Points[12].y = 4329869;
+
+    strcpy(Points[12].id, "16");
+    Points[12].x = 721104;
+    Points[12].y = 4329969;
+
+    strcpy(Points[12].id, "17");
+    Points[12].x = 721204;
+    Points[12].y = 4330069;
+
+    strcpy(Points[12].id, "18");
+    Points[12].x = 721304;
+    Points[12].y = 4330169;
+
+    strcpy(Points[12].id, "19");
+    Points[12].x = 721404;
+    Points[12].y = 4330269;
+
+    strcpy(Points[12].id, "20");
+    Points[12].x = 721504;
+    Points[12].y = 4330369;
 
 
 }
