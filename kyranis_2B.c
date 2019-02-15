@@ -21,7 +21,31 @@
 
 #include <stdio.h>
 
+#define numbers 3 // Το πλήθος των αριθμών που ζητάει το πρόγραμμα
+#define range 10  // Το διάστημα από τον προηγούμενο αριθμό
+
 int main()
 {
+    int i; // Μετρητής
+    int number; // Αριθμός που εισάγει ο χρήστης
+    int startRange, endRange; // Αρχή και τέλους διαστήματος που πρέπει να ανήκει ο αριθμός
 
+    // Εισαγωγή δεδομένων για numbers αριθμούς, με αμυντικό προγραμματισμό
+    for(i=0; i<numbers; i++) {
+
+        startRange = 0-range;
+        endRange = 0+range;
+
+        do {
+
+            printf("\nΕισάγετε την τιμή του %dου κόμβου: [%d,%d]", i+1, startRange, endRange);
+            scanf("%d", &number);
+
+            if (number<startRange || number>endRange) {
+                printf("\nΛάθος τιμή! Η τιμή πρέπει να είναι στο διάστημα: [%d,%d]", startRange, endRange);
+            }
+
+
+        } while (number<startRange || number>endRange);
+    }
 }
