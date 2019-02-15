@@ -18,7 +18,7 @@
 #include <math.h>
 #include <string.h>
 
-#define plithos_simeiwn 13 /*Πλήθος σημείων ενδιαφέροντος*/
+#define plithos_simeiwn 20 /*Πλήθος σημείων ενδιαφέροντος*/
 #define Xmin 719604.0 /*Ελάχιστο γεωγραφικό μήκος*/
 #define Xmax 722538.0 /*Μέγιστο γεωγραφικό μήκος*/
 #define Ymin 4328469.0 /*Ελάχιστο γεωγραφικό πλάτος*/
@@ -44,30 +44,32 @@ double Average_Distances [plithos_simeiwn];
 /*Συνάρτηση για την καταχώρηση των σημείων ενδιαφέροντος με αμυντικό προγραμματισμό*/
 void Data_Points()
 {
-//    int i;
-//
-//    // Ζητάει plithos_simeiwn φορές τα σημεία ενδιαφέροντος, με αμυντικό προγραμμτισμό
+    int i;
+
+    // Ζητάει plithos_simeiwn φορές τα σημεία ενδιαφέροντος, με αμυντικό προγραμμτισμό
 //    for (i=0; i<plithos_simeiwn; i++) {
-//        do {
-//            printf("Δώσε id για το σημείο %d: ", i+1);
-//            scanf("%s", Points[i].id);
 //
-//            printf("Δωσε συντεταγμένη Χ για το σημείο %d: ", i+1);
+//        printf("Δώσε id για το σημείο %d: ", i+1);
+//        scanf("%s", Points[i].id);
+//
+//        do {
+//            printf("Δωσε γεωγραφικό μήκος για το σημείο %d: [%.0f-%.0f] ", i+1, Xmin, Xmax);
 //            scanf("%lf", &Points[i].x);
 //
-//            printf("Δωσε συντεταγμένη Y για το σημείο %d: ", i+1);
-//            scanf("%lf", &Points[i].y);
 //
 //            if (Points[i].x<Xmin || Points[i].x>Xmax) {
-//                printf("Έδωσες συντεταγμένες x εκτός ορίων της πόλης\n");
+//                printf("Έδωσες γεωγραφικό μήκος εκτός ορίων της πόλης\n");
 //            }
+//        } while (Points[i].x<Xmin || Points[i].x>Xmax);
+//
+//        do {
+//            printf("Δωσε γεωγραφικό πλάτος για το σημείο %d: [%.0f-%.0f] ", i+1, Ymin, Ymax);
+//            scanf("%lf", &Points[i].y);
 //
 //            if (Points[i].y<Ymin || Points[i].y>Ymax) {
-//                printf("Έδωσες συντεταγμένες y εκτός ορίων της πόλης\n");
+//                printf("Έδωσες γεωγραφικό πλάτος εκτός ορίων της πόλης\n");
 //            }
-//
-//        } while ( (Points[i].x<Xmin || Points[i].x>Xmax)
-//                || (Points[i].y<Ymin || Points[i].y>Ymax) );
+//        } while (Points[i].y<Ymin || Points[i].y>Ymax);
 //    }
 
     strcpy(Points[0].id, "1");
@@ -122,33 +124,33 @@ void Data_Points()
     Points[12].x = 720804;
     Points[12].y = 4329669;
 
-    strcpy(Points[12].id, "14");
-    Points[12].x = 720904;
-    Points[12].y = 4329769;
+    strcpy(Points[13].id, "14");
+    Points[13].x = 720904;
+    Points[13].y = 4329769;
 
-    strcpy(Points[12].id, "15");
-    Points[12].x = 721004;
-    Points[12].y = 4329869;
+    strcpy(Points[14].id, "15");
+    Points[14].x = 721004;
+    Points[14].y = 4329869;
 
-    strcpy(Points[12].id, "16");
-    Points[12].x = 721104;
-    Points[12].y = 4329969;
+    strcpy(Points[15].id, "16");
+    Points[15].x = 721104;
+    Points[15].y = 4329969;
 
-    strcpy(Points[12].id, "17");
-    Points[12].x = 721204;
-    Points[12].y = 4330069;
+    strcpy(Points[16].id, "17");
+    Points[16].x = 721204;
+    Points[16].y = 4330069;
 
-    strcpy(Points[12].id, "18");
-    Points[12].x = 721304;
-    Points[12].y = 4330169;
+    strcpy(Points[17].id, "18");
+    Points[17].x = 721304;
+    Points[17].y = 4330169;
 
-    strcpy(Points[12].id, "19");
-    Points[12].x = 721404;
-    Points[12].y = 4330269;
+    strcpy(Points[18].id, "19");
+    Points[18].x = 721404;
+    Points[18].y = 4330269;
 
-    strcpy(Points[12].id, "20");
-    Points[12].x = 721504;
-    Points[12].y = 4330369;
+    strcpy(Points[19].id, "20");
+    Points[19].x = 721504;
+    Points[19].y = 4330369;
 
 
 }
@@ -158,8 +160,7 @@ void Data_Points()
 double Euclidean_Distance (int i, int j)
 {
     // Επιστρέφει το αποτέλεσμα του υπολογισμού
-    return sqrt( (Points[i].x - Points[j].x) * (Points[i].x - Points[j].x)
-               + (Points[i].y - Points[j].y) * (Points[i].y - Points[j].y) );
+    return sqrt( pow((Points[i].x - Points[j].x),2) + pow((Points[i].y - Points[j].y),2) );
 }
 
 
@@ -171,11 +172,7 @@ void Populate_Distance_Matrix()
     // Σαρώνει όλα τα σημεία μεταξύ τους και υπολογίζει την απόσταση
     for (i=0; i<plithos_simeiwn; i++) {
         for (j=0; j<plithos_simeiwn; j++) {
-            if(i!=j) {
-                Distances[i][j] = Euclidean_Distance(i, j);
-            } else { // Όταν συγκρίνει ένα σημείο με τον εαυτό του, βάζει 0
-                Distances[i][j] = 0.0;
-            }
+            Distances[i][j] = Euclidean_Distance(i, j);
         }
     }
 }
@@ -193,13 +190,11 @@ void Average_Distance_Matrix()
         sum = 0; // Αρχικοποίηση του αθροίσματος
 
         for (j=0; j<plithos_simeiwn; j++) {
-            if(i!=j) { // Δεν χρειάζεται να προσθέσει την απόσταση με τον εαυτό του
-                sum += Distances[i][j];
-            }
+            sum += Distances[i][j];
         }
 
         // Υπολογίζει τον μέσο όρο και των καταχωρεί στον πίνακα Average_Distances
-        Average_Distances[i] = sum / (plithos_simeiwn-1);
+        Average_Distances[i] = (float) sum / (plithos_simeiwn-1);
     }
 }
 
@@ -234,30 +229,42 @@ int main()
         printf("id=%s  Average=%lf \n", Points[i].id, Average_Distances[i]);
 
 
-    // Υπολογισμός του συνολικού μέσου όρου
+    // Υπολογισμός και εμφάνιση του συνολικού μέσου όρου
     totalSum = 0;
 
     for (i=0; i<plithos_simeiwn; i++) {
         totalSum += Average_Distances[i];
     }
 
-    totalAverage = totalSum / plithos_simeiwn;
+    totalAverage = (float) totalSum / plithos_simeiwn;
+
+    printf("\nTotal Average: %f\n", totalAverage);
 
     // Γέμισμα του πίνακα Regions με την περιοχή που ανήκει το κάθε σημείο
+    // και εμφάνιση του
+
+    printf("\nCategorisation in Regions:\n");
+
     for (i=0; i<plithos_simeiwn; i++) {
         // Όταν ο μέσο όρος είναι μικρότερος ή ίσος του συνολικού μέσου όρου
         // ανήκει στην περιοχή 100. Αλλιώς στην 200
         Regions[i] = (Average_Distances[i]<=totalAverage) ? 100 : 200;
+
+        printf("id=%s Region=%d\n", Points[i].id, Regions[i]);
     }
 
     /*Υπολογισμός των μέγιστων μέσων τιμών ανά περιοχή*/
+
+    printf("\nCalculation of Max Distance per Region\n\n");
+
     for (i=0; i<Total_Regions; i++) {
         // Αρχικοποίηση του μεγίστου για την περιοχή
-        maxAverageInRegions[i] = Average_Distances[0];
+        maxAverageInRegions[i] = 0;
 
         // Σάρωση των μέσων όρων του κάθε σημείου
-        for (j = 0; j < plithos_simeiwn; j++) {
+        for (j = 1; j < plithos_simeiwn; j++) {
             // Αν η περιοχή του σημείου είναι η 100 ή η 200
+
             if (Regions[j]==((i+1)*100)) {
                 // Ελέγχει αν η τιμή είναι μεγαλύτερη από την τρέχουσα μέγιστη
                 // και την θέτει σαν την νέα μέγιστη
@@ -266,9 +273,15 @@ int main()
                 }
             }
         }
+
+        printf("Region=%d max in region: %f\n", (i+1)*100, maxAverageInRegions[i]);
+
     }
 
     /*Υπολογισμός των κεραιών που θα χρειαστούν ανά περιοχή, με στρογγυλοποίηση*/
+
+    printf("\nCalculation of Amount of Antennas per Region\n");
+
     for (i=0; i<Total_Regions; i++) {
         printf("\nΤο πλήθος των κεραιών για την περιοχή %d είναι: %d",
                 (i+1)*100, (int) ((maxAverageInRegions[i] / Radius) + 0.5));
