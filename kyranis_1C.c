@@ -14,15 +14,6 @@
 
 #include <stdio.h>
 
-int f(int n);
-
-int main()
-{
-    printf("%d\n", f(23));
-
-    return 0;
-}
-
 int f(int n)
 {
     if (n<=1)
@@ -31,8 +22,16 @@ int f(int n)
     if (n%5==0)
         return f(n/5)+5;
     else
-        if (n%4==2)
-            return f(n/2)+2;
-        else
-            return f((n-1)/2)+3;
+    if (n%4==2)
+        return f(n/2)+2;
+    else
+        return f((n-1)/2)+3;
 }
+
+int main()
+{
+    printf("%d\n", f(23));
+
+    return 0;
+}
+

@@ -16,17 +16,6 @@
 
 #include <stdio.h>
 
-int compareDigitsOfIntegers(int a, int b);
-
-int main()
-{
-    int a=1223, b=3425;
-
-    printf("Το αποτέλεσμα του ελέγχου των δύο ακεραίων είναι: %d", compareDigitsOfIntegers(a,b));
-
-    return 0;
-}
-
 /**
  * Έλεγχος 2 ακεραίων, αν έχουνε ίδια τα 2 τελευταία ψηφία τους
  */
@@ -37,3 +26,13 @@ int compareDigitsOfIntegers(int a, int b)
     // Επιστρέφει 1 αν ισχύει η ισότητα, 0 αν όχι
     return ( (a % 100) == (b % 100) );
 }
+
+int main()
+{
+    int a=1223, b=3425;
+
+    printf("Το αποτέλεσμα του ελέγχου των δύο ακεραίων είναι: %d", compareDigitsOfIntegers(a,b));
+
+    return 0;
+}
+

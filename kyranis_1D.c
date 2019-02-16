@@ -18,7 +18,17 @@
 
 #include <stdio.h>
 
-int factorial(int number);
+/**
+ * Υπολογισμός του παραγοντικού, με αναδρομική συνάρτηση
+ */
+int factorial(int number)
+{
+    if(number==0) {
+        return 1; // Επιστρέφει 1 και τερματίζεται την αναδρομή
+    } else {
+        return number * factorial(number-1); // n!=n*(n-1)!
+    }
+}
 
 int main()
 {
@@ -50,14 +60,3 @@ int main()
     return 0;
 }
 
-/**
- * Υπολογισμός του παραγοντικού, με αναδρομική συνάρτηση
- */
-int factorial(int number)
-{
-    if(number==0) {
-        return 1; // Επιστρέφει 1 και τερματίζεται την αναδρομή
-    } else {
-        return number * factorial(number-1); // n!=n*(n-1)!
-    }
-}
