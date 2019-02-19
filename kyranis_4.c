@@ -47,111 +47,32 @@ void Data_Points()
     int i;
 
     // Ζητάει plithos_simeiwn φορές τα σημεία ενδιαφέροντος, με αμυντικό προγραμμτισμό
-//    for (i=0; i<plithos_simeiwn; i++) {
-//
-//        printf("Δώσε id για το σημείο %d: ", i+1);
-//        scanf("%s", Points[i].id);
-//
-//        do {
-//            printf("Δωσε γεωγραφικό μήκος για το σημείο %d: [%.0f-%.0f] ", i+1, Xmin, Xmax);
-//            scanf("%lf", &Points[i].x);
-//
-//
-//            if (Points[i].x<Xmin || Points[i].x>Xmax) {
-//                printf("Έδωσες γεωγραφικό μήκος εκτός ορίων της πόλης\n");
-//            }
-//        } while (Points[i].x<Xmin || Points[i].x>Xmax);
-//
-//        do {
-//            printf("Δωσε γεωγραφικό πλάτος για το σημείο %d: [%.0f-%.0f] ", i+1, Ymin, Ymax);
-//            scanf("%lf", &Points[i].y);
-//
-//            if (Points[i].y<Ymin || Points[i].y>Ymax) {
-//                printf("Έδωσες γεωγραφικό πλάτος εκτός ορίων της πόλης\n");
-//            }
-//        } while (Points[i].y<Ymin || Points[i].y>Ymax);
-//    }
+    for (i=0; i<plithos_simeiwn; i++) {
 
-    strcpy(Points[0].id, "1");
-    Points[0].x = 719604;
-    Points[0].y = 4328469;
+        printf("Δώσε id για το σημείο %d: ", i+1);
+        scanf("%s", Points[i].id);
 
-    strcpy(Points[1].id, "2");
-    Points[1].x = 719704;
-    Points[1].y = 4328569;
+        // Το γεωγραφικό μήκος και πλάτος ελέγχουμε αν είναι μέσα στα όρια της πόλης
 
-    strcpy(Points[2].id, "3");
-    Points[2].x = 719804;
-    Points[2].y = 4328669;
+        do {
+            printf("Δωσε γεωγραφικό μήκος για το σημείο %d: [%.0f-%.0f] ", i+1, Xmin, Xmax);
+            scanf("%lf", &Points[i].x);
 
-    strcpy(Points[3].id, "4");
-    Points[3].x = 719904;
-    Points[3].y = 4328769;
 
-    strcpy(Points[4].id, "5");
-    Points[4].x = 720004;
-    Points[4].y = 4328869;
+            if (Points[i].x<Xmin || Points[i].x>Xmax) {
+                printf("Έδωσες γεωγραφικό μήκος εκτός ορίων της πόλης\n");
+            }
+        } while (Points[i].x<Xmin || Points[i].x>Xmax);
 
-    strcpy(Points[5].id, "6");
-    Points[5].x = 720104;
-    Points[5].y = 4328969;
+        do {
+            printf("Δωσε γεωγραφικό πλάτος για το σημείο %d: [%.0f-%.0f] ", i+1, Ymin, Ymax);
+            scanf("%lf", &Points[i].y);
 
-    strcpy(Points[6].id, "7");
-    Points[6].x = 720204;
-    Points[6].y = 4329069;
-
-    strcpy(Points[7].id, "8");
-    Points[7].x = 720304;
-    Points[7].y = 4329169;
-
-    strcpy(Points[8].id, "9");
-    Points[8].x = 720404;
-    Points[8].y = 4329269;
-
-    strcpy(Points[9].id, "10");
-    Points[9].x = 720504;
-    Points[9].y = 4329369;
-
-    strcpy(Points[10].id, "11");
-    Points[10].x = 720604;
-    Points[10].y = 4329469;
-
-    strcpy(Points[11].id, "12");
-    Points[11].x = 720704;
-    Points[11].y = 4329569;
-
-    strcpy(Points[12].id, "13");
-    Points[12].x = 720804;
-    Points[12].y = 4329669;
-
-    strcpy(Points[13].id, "14");
-    Points[13].x = 720904;
-    Points[13].y = 4329769;
-
-    strcpy(Points[14].id, "15");
-    Points[14].x = 721004;
-    Points[14].y = 4329869;
-
-    strcpy(Points[15].id, "16");
-    Points[15].x = 721104;
-    Points[15].y = 4329969;
-
-    strcpy(Points[16].id, "17");
-    Points[16].x = 721204;
-    Points[16].y = 4330069;
-
-    strcpy(Points[17].id, "18");
-    Points[17].x = 721304;
-    Points[17].y = 4330169;
-
-    strcpy(Points[18].id, "19");
-    Points[18].x = 721404;
-    Points[18].y = 4330269;
-
-    strcpy(Points[19].id, "20");
-    Points[19].x = 721504;
-    Points[19].y = 4330369;
-
+            if (Points[i].y<Ymin || Points[i].y>Ymax) {
+                printf("Έδωσες γεωγραφικό πλάτος εκτός ορίων της πόλης\n");
+            }
+        } while (Points[i].y<Ymin || Points[i].y>Ymax);
+    }
 
 }
 
@@ -263,8 +184,8 @@ int main()
 
         // Σάρωση των μέσων όρων του κάθε σημείου
         for (j = 1; j < plithos_simeiwn; j++) {
-            // Αν η περιοχή του σημείου είναι η 100 ή η 200
 
+            // Αν η περιοχή του σημείου είναι η 100 ή η 200
             if (Regions[j]==((i+1)*100)) {
                 // Ελέγχει αν η τιμή είναι μεγαλύτερη από την τρέχουσα μέγιστη
                 // και την θέτει σαν την νέα μέγιστη
